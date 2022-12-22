@@ -1,0 +1,58 @@
+/* #cityInput:hover {
+  border: none;
+} */
+#my-body {
+  color: #1c63aa;
+}
+.form-control:focus {
+  box-shadow: 0 0 0 0.05rem rgba(71, 71, 71, 0.25);
+}
+.form-control {
+  background-color: none;
+}
+.btn {
+  font-size: 16px;
+}
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+#date {
+  font-size: 14px;
+  padding: 10px;
+}
+.weather {
+  box-shadow: 0 0 0 0.05rem rgba(71, 71, 71, 0.25);
+  max-width: 600px;
+  padding: 15px;
+  margin: 15px;
+}
+#temperature {
+  font-size: 100px;
+  font-weight: 300;
+  color: #474747;
+  text-align: center;
+  letter-spacing: 15px;
+}
+.bg-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.mask {
+  /* fallback for old browsers */
+  background: #e6e9f0;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(
+    to right,
+    rgba(230, 233, 240, 0.5),
+    rgba(238, 241, 245, 0.5)
+  );
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(
+    to right,
+    rgba(230, 233, 240, 0.5),
+    rgba(238, 241, 245, 0.5)
+  );
+}
