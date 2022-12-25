@@ -13,6 +13,7 @@
     />
     <link rel="stylesheet" href="src/style.css" />
   </head>
+  <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
 
   <body id="my-body">
     <h1>Weather project</h1>
@@ -21,12 +22,12 @@
         <div
           class="bg-image ripple"
           style="
-            background-image: url('https://s3.amazonaws.com/shecodesio-production/uploads/files/000/059/931/original/backgroundForecast.png?1671656199');
+            background-image: url('https://s3.amazonaws.com/shecodesio-production/uploads/files/000/060/263/original/backgroundForecastSmall1.png?1671986924');
             height: auto;
           "
         >
           <div class="mask" style="background-color: rgba(251, 251, 251, 0.8)">
-            <form class="row">
+            <form class="row pb-3" id="searchCityForm">
               <div class="col-auto">
                 <input
                   class="form-control form-control-lg border-0 border-bottom rounded-0 bg-transparent"
@@ -44,7 +45,8 @@
                 </button>
               </div>
             </form>
-            <p id="date">Date date date</p>
+            <h2 class="ps-4" id="city-name">City Name</h2>
+            <p id="date" class="ps-4 py-0">Date date date</p>
 
             <div class="row align-items-center">
               <div class="col-6" id="temperature">+17</div>
