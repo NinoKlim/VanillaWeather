@@ -1,3 +1,30 @@
+let now = new Date();
+
+function curDate() {
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[now.getDay()];
+  let hours = now.getHours();
+  let minutes = now.getMinutes();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  let formDate = `${day}, ${hours}:${minutes}`;
+  return formDate;
+}
+document.querySelector("#date").innerHTML = curDate(new Date());
+
 let forecastElements = document.querySelector("#forecast");
 let dayTime = ["Morning", "Afternoon", "Night"];
 let forecastHTML = `<div class="row px-2 pt-4">`;
@@ -22,8 +49,6 @@ function showWeather(response) {
   let lon = response.data[0].lon;
   let apiKey = `017d56650cd168d68067850318775d43`;
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-
-  // console.log(response);
   axios.get(apiUrl).then(showForecast);
 }
 
