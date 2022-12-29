@@ -84,7 +84,9 @@ function showFahrenheit(event) {
   let fahrenheitTemp = (celsiusTemperature * 9) / 5 + 32;
   document.querySelector("#temperature").innerHTML = Math.round(fahrenheitTemp);
 }
-navigator.geolocation.getCurrentPosition(curCity);
+function displayCity(cityValue) {
+  getLocation(cityValue.data[0].name);
+}
 
 function curCity(position) {
   let lat = position.coords.latitude;
@@ -94,6 +96,4 @@ function curCity(position) {
   axios.get(apiUrl).then(displayCity);
 }
 
-function displayCity(cityValue) {
-  getLocation(cityValue.data[0].name);
-}
+navigator.geolocation.getCurrentPosition(curCity);
