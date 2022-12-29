@@ -36,20 +36,29 @@
                 />
               </div>
               <div class="col align-self-end">
-                <button
-                  type="button"
+                <input
+                  type="submit"
+                  value="Search city"
                   class="btn btn-light mb-6 text-black bg-transparent"
                   style="--bs-text-opacity: 0.7"
-                >
-                  Search city
-                </button>
+                  id="search-city-btn"
+                />
               </div>
             </form>
-            <h2 class="ps-4" id="city-name">City Name</h2>
+            <h2 class="ps-4" id="city-name"></h2>
             <p id="date" class="ps-4 py-0">Date date date</p>
 
-            <div class="row align-items-center">
-              <div class="col-6" id="temperature">+17</div>
+            <div class="row g-0">
+              <div class="col-6 ps-4 justify-content-center">
+                <span id="temperature"></span>
+
+                <span id="units">
+                  <a href="#" id="celcius">C°</a>
+                  |
+                  <a href="#" id="fahrenheit">°F</a></span
+                >
+              </div>
+
               <div class="col-6">
                 <ul
                   class="list-group list-group-flush"
@@ -61,11 +70,7 @@
                   >
                     <div class="row align-items-end">
                       <div class="col-5">
-                        <img
-                          src="media/cloudIcon.png"
-                          alt="cloud"
-                          width="50px"
-                        />
+                        <img src="" alt="cloud" width="50px" id="icon" />
                       </div>
                       <div class="col-7">Clouds</div>
                     </div>

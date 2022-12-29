@@ -56,3 +56,10 @@ input:-webkit-autofill {
     rgba(238, 241, 245, 0.5)
   );
 }
+#units {
+  position: relative;
+  top: -60px;
+}
+#fahrenheit {
+  text-decoration: none;
+}
