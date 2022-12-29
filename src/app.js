@@ -62,7 +62,13 @@ function curCity(position) {
   let apiUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${apiKey}`;
   axios.get(apiUrl).then(displayCity);
 }
+const promise1 = new Promise((resolve, reject) => {
+  throw "Uh-oh!";
+});
 
+promise1.catch((error) => {
+  console.error(error);
+});
 navigator.geolocation.getCurrentPosition(curCity);
 
 let celsiusLink = document.querySelector("#celcius");
