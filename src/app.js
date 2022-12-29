@@ -54,28 +54,13 @@ function getLocation(cityValue) {
 function displayCity(cityValue) {
   getLocation(cityValue.data[0].name);
 }
-const p1 = new Promise((resolve, reject) => {
-  resolve("Success");
-});
-
-p1.then((value) => {
-  console.log(value); // "Success!"
-  throw new Error("oh, no!");
-})
-  .catch((e) => {
-    console.error(e.message); // "oh, no!"
-  })
-  .then(
-    () => console.log("after a catch the chain is restored"),
-    () => console.log("Not fired due to the catch")
-  );
 
 function curCity(response) {
   console.log(response);
   let lat = response.coords.latitude;
   let lon = response.coords.longitude;
   let apiKey = `017d56650cd168d68067850318775d43`;
-  let apiUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${apiKey}`;
+  let apiUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${apiKey}`;
   axios.get(apiUrl).then(displayCity);
 }
 navigator.geolocation.getCurrentPosition(curCity);
@@ -100,14 +85,3 @@ function showFahrenheit(event) {
   let fahrenheitTemp = (celsiusTemperature * 9) / 5 + 32;
   document.querySelector("#temperature").innerHTML = Math.round(fahrenheitTemp);
 }
-p1.then((value) => {
-  console.log(value); // "Success!"
-  return Promise.reject("oh, no!");
-})
-  .catch((e) => {
-    console.error(e); // "oh, no!"
-  })
-  .then(
-    () => console.log("after a catch the chain is restored"),
-    () => console.log("Not fired due to the catch")
-  );
