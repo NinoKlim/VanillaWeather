@@ -84,6 +84,7 @@ function showFahrenheit(event) {
   let fahrenheitTemp = (celsiusTemperature * 9) / 5 + 32;
   document.querySelector("#temperature").innerHTML = Math.round(fahrenheitTemp);
 }
+navigator.geolocation.getCurrentPosition(curCity);
 
 function curCity(position) {
   let lat = position.coords.latitude;
@@ -92,8 +93,7 @@ function curCity(position) {
   let apiUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${apiKey}`;
   axios.get(apiUrl).then(displayCity);
 }
-navigator.geolocation.getCurrentPosition(curCity);
 
-function displayCity(cityName) {
-  getLocation(cityName.data[0].name);
+function displayCity(cityValue) {
+  getLocation(cityValue.data[0].name);
 }
