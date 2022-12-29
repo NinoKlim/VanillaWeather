@@ -62,22 +62,22 @@ function curCity(response) {
   let apiKey = `017d56650cd168d68067850318775d43`;
   let apiUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${apiKey}`;
   axios.get(apiUrl).then(displayCity);
-}
-const p1 = new Promise((resolve, reject) => {
-  resolve("Success");
-});
+  const p1 = new Promise((resolve, reject) => {
+    resolve("Success");
+  });
 
-p1.then((value) => {
-  console.log(value); // "Success!"
-  throw new Error("oh, no!");
-})
-  .catch((e) => {
-    console.error(e.message); // "oh, no!"
+  p1.then((value) => {
+    console.log(value); // "Success!"
+    throw new Error("oh, no!");
   })
-  .then(
-    () => console.log("after a catch the chain is restored"),
-    () => console.log("Not fired due to the catch")
-  );
+    .catch((e) => {
+      console.error(e.message); // "oh, no!"
+    })
+    .then(
+      () => console.log("after a catch the chain is restored"),
+      () => console.log("Not fired due to the catch")
+    );
+}
 navigator.geolocation.getCurrentPosition(curCity);
 
 let celsiusLink = document.querySelector("#celcius");
