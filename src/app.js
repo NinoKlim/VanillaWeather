@@ -67,12 +67,6 @@ function getLocation(cityValue) {
 let celsiusLink = document.querySelector("#celcius");
 celsiusLink.addEventListener("click", showCelcius);
 
-let celsiusTemperature = null;
-// function getLocationFahr(cityValue) {
-//   let apiKey = `017d56650cd168d68067850318775d43`;
-//   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&appid=${apiKey}&units=imperial`;
-//   axios.get(apiUrl).then(showForecast);
-// }
 let fahrenheitLink = document.querySelector("#fahrenheit");
 fahrenheitLink.addEventListener("click", showFahrenheit);
 
@@ -100,26 +94,6 @@ function curCity(position) {
 }
 navigator.geolocation.getCurrentPosition(curCity);
 
-// function defaultCity() {
-//   navigator.geolocation.getCurrentPosition(curCity);
-// }
-
 function displayCity(cityName) {
   getLocation(cityName.data[0].name);
 }
-
-// function displayCityFahr(cityName) {
-//   getLocationFahr(cityName.data[0].name);
-// }
-
-// function curCity2() {
-//   navigator.geolocation.getCurrentPosition(curCityFahr);
-// }
-
-// function curCityFahr(position) {
-//   let lat = position.coords.latitude;
-//   let lon = position.coords.longitude;
-//   let apiKey = `017d56650cd168d68067850318775d43`;
-//   let apiUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${apiKey}`;
-//   axios.get(apiUrl).then(displayCityFahr);
-// }
