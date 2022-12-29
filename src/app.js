@@ -25,20 +25,6 @@ function curDate() {
 document.querySelector("#date").innerHTML = curDate(new Date());
 let forecastElements = document.querySelector("#forecast");
 
-let dayTime = ["Morning", "Afternoon", "Night"];
-let forecastHTML = `<div class="row px-2 pt-4">`;
-dayTime.forEach(function (time) {
-  forecastHTML =
-    forecastHTML +
-    ` <div class="col-4 text-center">
-    <div> <small> ${time} </small></div> 
-    <img src="media/cloudIcon.png"  width="30px"  alt="cloud" class="py-2"/>
-   <div>+22</div>
-   </div> `;
-});
-forecastHTML = forecastHTML + `</div>`;
-forecastElements.innerHTML = forecastHTML;
-
 function showForecast(response) {
   console.log(response);
   celsiusTemperature = Math.round(response.data.main.temp);
@@ -64,6 +50,21 @@ function getLocation(cityValue) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showForecast);
 }
+
+function displayCity(cityValue) {
+  getLocation(cityValue.data[0].name);
+}
+
+function curCity(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let apiKey = `017d56650cd168d68067850318775d43`;
+  let apiUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${apiKey}`;
+  axios.get(apiUrl).then(displayCity);
+}
+
+navigator.geolocation.getCurrentPosition(curCity);
+
 let celsiusLink = document.querySelector("#celcius");
 celsiusLink.addEventListener("click", showCelcius);
 
@@ -84,16 +85,3 @@ function showFahrenheit(event) {
   let fahrenheitTemp = (celsiusTemperature * 9) / 5 + 32;
   document.querySelector("#temperature").innerHTML = Math.round(fahrenheitTemp);
 }
-function displayCity(cityValue) {
-  getLocation(cityValue.data[0].name);
-}
-
-function curCity(position) {
-  let lat = position.coords.latitude;
-  let lon = position.coords.longitude;
-  let apiKey = `017d56650cd168d68067850318775d43`;
-  let apiUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${apiKey}`;
-  axios.get(apiUrl).then(displayCity);
-}
-
-navigator.geolocation.getCurrentPosition(curCity);
