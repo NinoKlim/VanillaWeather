@@ -80,17 +80,6 @@ function curCity(response) {
 }
 navigator.geolocation.getCurrentPosition(curCity);
 
-p1.then((value) => {
-  console.log(value); // "Success!"
-  return Promise.reject("oh, no!");
-})
-  .catch((e) => {
-    console.error(e); // "oh, no!"
-  })
-  .then(
-    () => console.log("after a catch the chain is restored"),
-    () => console.log("Not fired due to the catch")
-  );
 let celsiusLink = document.querySelector("#celcius");
 celsiusLink.addEventListener("click", showCelcius);
 
@@ -111,3 +100,14 @@ function showFahrenheit(event) {
   let fahrenheitTemp = (celsiusTemperature * 9) / 5 + 32;
   document.querySelector("#temperature").innerHTML = Math.round(fahrenheitTemp);
 }
+p1.then((value) => {
+  console.log(value); // "Success!"
+  return Promise.reject("oh, no!");
+})
+  .catch((e) => {
+    console.error(e); // "oh, no!"
+  })
+  .then(
+    () => console.log("after a catch the chain is restored"),
+    () => console.log("Not fired due to the catch")
+  );
