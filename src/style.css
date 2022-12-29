@@ -60,6 +60,14 @@ input:-webkit-autofill {
   position: relative;
   top: -60px;
 }
-#fahrenheit {
+#fahrenheit,
+#celcius {
   text-decoration: none;
+}
+.weatherTemp .unitActive {
+  color: black;
+  cursor: default;
+}
+.weatherTemp .unitActive:hover {
+  text-emphasis: none;
 }

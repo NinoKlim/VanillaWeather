@@ -64,22 +64,29 @@ function getLocation(cityValue) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showForecast);
 }
-document.querySelector("#celcius").addEventListener("click", showCelcius);
+let celsiusLink = document.querySelector("#celcius");
+celsiusLink.addEventListener("click", showCelcius);
+
 let celsiusTemperature = null;
 // function getLocationFahr(cityValue) {
 //   let apiKey = `017d56650cd168d68067850318775d43`;
 //   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&appid=${apiKey}&units=imperial`;
 //   axios.get(apiUrl).then(showForecast);
 // }
-document.querySelector("#fahrenheit").addEventListener("click", showFahrenheit);
+let fahrenheitLink = document.querySelector("#fahrenheit");
+fahrenheitLink.addEventListener("click", showFahrenheit);
 
 function showCelcius(event) {
   event.preventDefault();
+  celsiusLink.classList.add("unitActive");
+  fahrenheitLink.classList.remove("unitActive");
   document.querySelector("#temperature").innerHTML = celsiusTemperature;
 }
 
 function showFahrenheit(event) {
   event.preventDefault();
+  celsiusLink.classList.remove("unitActive");
+  fahrenheitLink.classList.add("unitActive");
   let fahrenheitTemp = (celsiusTemperature * 9) / 5 + 32;
   document.querySelector("#temperature").innerHTML = Math.round(fahrenheitTemp);
 }
