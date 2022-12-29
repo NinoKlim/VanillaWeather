@@ -34,7 +34,9 @@ function showForecast(response) {
     "src",
     `https://www.linkpicture.com/q/${response.data.weather[0].icon}.png`
   );
-  document.querySelector("#date").innerHTML = curDate(response.data.dt * 1000);
+  document.querySelector("#date").innerHTML = curDate(
+    response.data.dt * 1000 - response.data.timezone * 1000
+  );
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
