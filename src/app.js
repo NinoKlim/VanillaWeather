@@ -55,13 +55,19 @@ function displayCity(cityValue) {
   getLocation(cityValue.data[0].name);
 }
 
-function curCity(position) {
-  console.log(position);
-  let lat = position.coords.latitude;
-  let lon = position.coords.longitude;
+function curCity(response) {
+  console.log(response);
+  let lat = response.coords.latitude;
+  let lon = response.coords.longitude;
   let apiKey = `017d56650cd168d68067850318775d43`;
   let apiUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${apiKey}`;
   axios.get(apiUrl).then(displayCity);
+  promise.then(
+    function () {
+      doSthHere();
+    },
+    function () {}
+  );
 }
 
 navigator.geolocation.getCurrentPosition(curCity);
