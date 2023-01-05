@@ -22,22 +22,35 @@ function curDate(timestamp) {
 }
 document.querySelector("#date").innerHTML = curDate(new Date());
 
-function showDailyForecast(daily) {
+function weekDays(dt) {
+  let date = new Date(dt * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = date.getDay();
+
+  return days[day];
+}
+
+function showDailyForecast(week) {
   let forecastElements = document.querySelector("#forecast");
-  let dayTime = ["Morning", "Afternoon", "Night"];
+  let weekForecast = week.data.daily;
   let forecastHTML = `<div class="row px-2 pt-4">`;
-  dayTime.forEach(function (time) {
-    forecastHTML =
-      forecastHTML +
-      ` <div class="col-4 text-center">
-      <div> <small> ${time} </small></div> 
-      <img src="media/cloudIcon.png"  width="30px"  alt="cloud" class="py-2"/>
-     <div>+22</div>
-     </div> `;
+  weekForecast.forEach(function (weekDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2 text-center py-4">
+            <div> <small> ${weekDays(weekDay.dt)} </small></div> 
+            <img src="https://github.com/NinoKlim/VanillaWeather/blob/main/media/${
+              weekDay.weather[0].icon
+            }.png?raw=true"  width="30px"  alt="cloud" class="py-2"/>
+          <div> <span class="temp-max">${Math.round(weekDay.temp.max)}°</span> 
+          <span class="temp-min">${Math.round(weekDay.temp.min)}°</span> </div>
+      </div> `;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElements.innerHTML = forecastHTML;
-  console.log(daily);
+  console.log(week);
 }
 
 function showForecast(response) {
