@@ -18,7 +18,7 @@
   <body id="my-body">
     <h1>Weather project</h1>
     <div class="container">
-      <div class="weather p-0">
+      <div class="weather p-0 rounded-2">
         <div
           class="bg-image ripple"
           style="
@@ -52,12 +52,7 @@
               <div class="col-6 ps-4 justify-content-center">
                 <div class="weatherTemp">
                   <span id="temperature"></span>
-
-                  <span id="units">
-                    <a href="#" id="celcius" class="unitActive">C°</a>
-                    |
-                    <a href="#" id="fahrenheit">°F</a></span
-                  >
+                  <span id="units"> C° </span>
                 </div>
               </div>
 
@@ -113,6 +108,14 @@
             <div id="forecast"></div>
           </div>
         </div>
+      </div>
+      <div class="col ps-3">
+        <span
+          ><a id="linkCode" href="https://github.com/NinoKlim/VanillaWeather"
+            >Open-source code</a
+          >
+          by Nina Klymenko</span
+        >
       </div>
     </div>
     <script src="src/app.js"></script>

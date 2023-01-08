@@ -59,15 +59,9 @@ input:-webkit-autofill {
 #units {
   position: relative;
   top: -60px;
+  color: #474747;
 }
-#fahrenheit,
-#celcius {
+
+#linkCode:hover {
   text-decoration: none;
-}
-.weatherTemp .unitActive {
-  color: black;
-  cursor: default;
-}
-.weatherTemp .unitActive:hover {
-  text-emphasis: none;
 }
