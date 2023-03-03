@@ -50,10 +50,10 @@ function showDailyForecast(week) {
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElements.innerHTML = forecastHTML;
-  console.log(week);
 }
 
 function showForecast(response) {
+  console.log(response);
   celsiusTemperature = Math.round(response.data.main.temp);
   document.querySelector("#temperature").innerHTML = celsiusTemperature;
 
@@ -63,6 +63,8 @@ function showForecast(response) {
     "src",
     `https://github.com/NinoKlim/VanillaWeather/blob/main/media/${response.data.weather[0].icon}.png?raw=true`
   );
+  document.querySelector("#icon-discription").innerHTML =
+    response.data.weather[0].main;
   document.querySelector("#date").innerHTML = curDate(response.data.dt * 1000);
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
