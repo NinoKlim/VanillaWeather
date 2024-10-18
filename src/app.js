@@ -40,9 +40,9 @@ function showDailyForecast(week) {
         forecastHTML +
         `<div class="col-2 text-center py-4">
             <div> <small> ${weekDays(weekDay.dt)} </small></div> 
-            <img src="https://github.com/NinoKlim/Vanilla-weather/blob/main/media/${
+            <img src="https://raw.githubusercontent.com/NinoKlim/VanillaWeather/refs/heads/main/media/${
               weekDay.weather[0].icon
-            }.png?raw=true"  width="30px"  alt="cloud" class="py-2"/>
+            }.png"  width="30px"  alt="cloud" class="py-2"/>
           <div> <span class="temp-max">${Math.round(weekDay.temp.max)}°</span> 
           <span class="temp-min">${Math.round(weekDay.temp.min)}°</span> </div>
       </div> `;
@@ -58,11 +58,12 @@ function showForecast(response) {
   document.querySelector("#temperature").innerHTML = celsiusTemperature;
 
   document.querySelector("#city-name").innerHTML = response.data.name;
+  console.log(response.data.name);
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
 
-    `https://github.com/NinoKlim/Vanilla-weather/blob/main/media/${response.data.weather[0].icon}.png?raw=true`
+    `https://raw.githubusercontent.com/NinoKlim/VanillaWeather/refs/heads/main/media/${response.data.weather[0].icon}.png`
   );
   document.querySelector("#icon-discription").innerHTML =
     response.data.weather[0].main;
