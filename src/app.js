@@ -40,7 +40,7 @@ function showDailyForecast(week) {
         forecastHTML +
         `<div class="col-2 text-center py-4">
             <div> <small> ${weekDays(weekDay.dt)} </small></div> 
-            <img src="https://github.com/NinoKlim/VanillaWeather/blob/main/media/${
+            <img src="https://github.com/NinoKlim/Vanilla-weather/blob/main/media/${
               weekDay.weather[0].icon
             }.png?raw=true"  width="30px"  alt="cloud" class="py-2"/>
           <div> <span class="temp-max">${Math.round(weekDay.temp.max)}°</span> 
@@ -61,7 +61,8 @@ function showForecast(response) {
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
-    `https://github.com/NinoKlim/VanillaWeather/blob/main/media/${response.data.weather[0].icon}.png?raw=true`
+
+    `https://github.com/NinoKlim/Vanilla-weather/blob/main/media/${response.data.weather[0].icon}.png?raw=true`
   );
   document.querySelector("#icon-discription").innerHTML =
     response.data.weather[0].main;
@@ -92,10 +93,11 @@ function getLocation(cityValue) {
   axios.get(apiUrl).then(showForecast);
 }
 
-function currentCity(position) {
-  getLocation(position.data.city);
+function currentCity() {
+  getLocation("Paris");
 }
 
-let token = `cd734928f9329a`;
-let apiUrl = `https://ipinfo.io/json?token=${token}`;
-axios.get(apiUrl).then(currentCity);
+// let token = `cd734928f9329a`;
+// let apiUrl = `https://ipinfo.io/json?token=${token}`;
+// axios.get(apiUrl).then(currentCity);
+currentCity();
